@@ -5,11 +5,22 @@ defmodule Meteo do
 		[[heure, endroit, degre, pluie] | endroit(tail)]
     
      end
-    
+    def pluie([]), do: []
      def pluie([[heure, endroit, degre, pluie] | tail]) do
      	[[heure, endroit, degre, pluie] | pluie(tail)]
 
     end
+    def heure([]), do: []
+     def heure([[heure, endroit, degre, pluie] | tail]) do
+     	[[heure, endroit, degre, pluie] | heure(tail)]
+
+    end
+    def degre([]), do: []
+     def degre([[heure, endroit, degre, pluie] | tail]) do
+     	[[heure, endroit, degre, pluie] | degre(tail)]
+
+    end
+    def total(_, _, _, x), do: x+x
 
     def test_data do
 		[
