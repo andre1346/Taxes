@@ -5,6 +5,6 @@ defmodule Taxes do
 
    def sum([head | tail], total), do: sum(tail, head+total) 
    
-     def total(x), do: x*0.15
+   def total(x), do: x*0.15
 
 end
