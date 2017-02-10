@@ -1,46 +1,27 @@
 defmodule Meteo do
 	
-	def endroit([]), do: []
-	def endroit([[heure, endroit, degre, pluie] | tail]) do
-		[[endroit] | endroit(tail)]
-       
-     end
-    def pluie([]), do: []
-     def pluie([[heure, endroit, degre, pluie] | tail]) do
-     	 [[pluie] | pluie(tail)]
-         |>List.flatten 
-         |>Enum.sum
-         
-    end
-    def heure([]), do: []
-     def heure([[heure, endroit, degre, pluie] | tail]) do
-     	[[heure] | heure(tail)] 
-    end
-         
-    def degre([]), do: []
-     def degre([[heure, endroit, degre, pluie] | tail]) do
-     	[[degre] | degre(tail)]
-        |>List.flatten 
-        
-    end
-
-
-
-
-
-    
-
-    def par_endroit([[heure, target_loc, degre, pluie] | tail], target_loc) 
-	   
-	    do [[heure, target_loc, degre, pluie] | par_endroit(tail, target_loc)]
 	
-	end
-    def par_endroit([ _ | tail], target_loc), do: par_endroit(tail, target_loc)
+    
+    def pluie([]), do: []
 
-	def par_endroit([], target_loc), do: []
+    def pluie([[_, _, _, pluie] | tail]) do
+     	 [[pluie] | pluie(tail)] 
+     end
+     def total_pluie() do
+     	pluie(test_data)
+     	|>List.flatten
+     	|>Enum.sum
 
+    end 
 
-    def test_data do
+    def endroit_27([]), do: []
+    def endroit_27([[temps, 27, temp, pluie] | tail]) do 
+      [[temps, 27, temp, pluie] | endroit_27(tail)]
+      
+   end
+    def endroit_27([_ | tail]), do: endroit_27(tail)
+    	
+         def test_data do
 		[
 			[1234, 26, 15, 0.125],
 			[1235, 27, 16, 0.45],
@@ -53,9 +34,8 @@ defmodule Meteo do
 			[1242, 28, 24, 0.03],
 			[1243, 26, 17, 0.025]
         ]
-    end    
 
+   end  
 
-   
+end  
   
-end
